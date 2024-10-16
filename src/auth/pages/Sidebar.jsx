@@ -25,25 +25,25 @@ export const Sidebar = () => {
 			</Box>
 			<Divider sx={{ backgroundColor: '#fff' }} />
 			<List>
-				<ListItem button component='a' href='/admin/user-page' sx={{ active: { color: 'red' } }}>
+				<ListItem button="true" component='a' href='/admin/user-page' sx={{ active: { color: 'red' } }}>
 					<ListItemIcon>
 						<PersonIcon sx={{ color: '#fff' }} />
 					</ListItemIcon>
 					<ListItemText primary='Usuarios' />
 				</ListItem>
-				<ListItem button component='a' href='/admin/clientes' sx={{ active: { color: 'red' } }}>
+				<ListItem button="true" component='a' href='/admin/clientes' sx={{ active: { color: 'red' } }}>
 					<ListItemIcon>
 						<PersonIcon sx={{ color: '#fff' }} />
 					</ListItemIcon>
 					<ListItemText primary='Clientes' />
 				</ListItem>
-				<ListItem button component='a' href='/admin/profile-page'>
+				<ListItem button="true" component='a' href='/admin/profile-page'>
 					<ListItemIcon>
 						<ApartmentIcon sx={{ color: '#fff' }} />
 					</ListItemIcon>
 					<ListItemText primary='Empresas' />
 				</ListItem>
-				<ListItem button component='a' href='/admin/invoices'>
+				<ListItem button="true" component='a' href='/admin/invoices'>
 					<ListItemIcon>
 						<ReceiptIcon sx={{ color: '#fff' }} />
 					</ListItemIcon>
