@@ -110,15 +110,16 @@
 
 
 // Third Party Dependencies.
-import { AppBar, Box, IconButton, Toolbar, Typography } from '@mui/material'
-import { useState, createRef, useEffect, Suspense } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import ArrowBackIcon from '@mui/icons-material/ArrowBack'
-import { useNavigate, Outlet, Route } from 'react-router-dom'
-import { Sidebar } from './Sidebar'
+import { AppBar, Box, IconButton, Toolbar, Typography } from '@mui/material';
+import { useState, createRef, useEffect, Suspense } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useNavigate, Outlet, Route } from 'react-router-dom';
+import { Sidebar } from '../components/Sidebar';
+
 
 // export default function LoginPageApp({ ...rest }) {
-  export const LoginPageApp = () => {
+  export const AdminApp = () => {
 	// States and Variables.
 	// const navigate = useNavigate()
 	// Getting path name.
