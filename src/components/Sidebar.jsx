@@ -1,8 +1,16 @@
 import PropTypes from 'prop-types';
 import { Box, Divider, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
+import { useNavigate } from 'react-router-dom';
 
 export const Sidebar = () => {
+	const navigate = useNavigate();
+	
+	const handleClick = (event, path) => {
+		event.preventDefault();
+		navigate(path);
+	}
+
 	return (
 		<Box
 			component='nav'
@@ -21,7 +29,13 @@ export const Sidebar = () => {
 			</Box>
 			<Divider sx={{ backgroundColor: '#fff' }} />
 			<List>
-				<ListItem button="true" component='a' href='/admin/user-register' sx={{ active: { color: 'red' } }}>
+				<ListItem 
+					button="true" 
+					component='a' 
+					href='/admin/user-register' 
+					sx={{ active: { color: 'red' } }}
+					onClick={(event) => handleClick(event, '/admin/user-register')}
+				>
 					<ListItemIcon>
 						<PersonIcon sx={{ color: '#fff' }} />
 					</ListItemIcon>

@@ -6,11 +6,14 @@ import { RegisterPage } from '../auth/pages/RegisterPage';
 import { AdminApp } from '../admin/AdminApp';
 import { UserRegister } from '../user/UserRegister/UserRegister';
 
+
+
 export const AppRouter = () => {
-    const { status, checkAuthToken } = useAuthStore();
+    const { status, user, checkAuthToken } = useAuthStore();
+    console.log('-user: ', user)
 
     useEffect(() => {
-        checkAuthToken();
+        checkAuthToken(user.email);
     }, []);
     
     if (status === 'checking') return (<h2>Cargando...</h2>);    
