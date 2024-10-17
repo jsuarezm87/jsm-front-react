@@ -1,123 +1,19 @@
-
-// import Swal from 'sweetalert2'
-
-// import './styles/UserRegisterScreen.css'
-
-
-// const registerFormFields = {
-// 	name: '',
-// 	lastName: '',
-// 	email: '',
-// 	password: '',
-// 	gender: '',
-// 	phone: '',
-// 	address: '',
-// }
-
-// export const LoginPageApp = () => {
-
-
-
-
-
-// 	return (
-// 		<div className='login-container'>
-// 			<div>
-// 				<form  className='login-form'>
-// 					<h3>User register</h3>
-// 					<div className='form-pair'>
-// 						<div className='form-group'>
-// 							<input
-// 								type='text'
-// 								className='form-control'
-// 								placeholder='name'
-// 								name='name'
-								
-							
-// 							/>
-// 						</div>
-// 						<div className='form-group'>
-// 							<input
-// 								type='text'
-// 								className='form-control'
-// 								placeholder='lastName'
-// 								name='lastName'
-								
-							
-// 							/>
-// 						</div>
-// 					</div>
-// 					<div className='form-pair'>
-// 						<div className='form-group'>
-// 							<input
-// 								type='text'
-// 								className='form-control'
-// 								placeholder='email'
-// 								name='email'
-						
-// 							/>
-// 						</div>
-// 						<div className='form-group'>
-// 							<input
-// 								type='text'
-// 								className='form-control'
-// 								placeholder='password'
-// 								name='password'
-								
-// 							/>
-// 						</div>
-// 					</div>
-// 					<div className='form-pair'>
-// 						<div className='form-group'>
-// 							<input
-// 								type='text'
-// 								className='form-control'
-// 								placeholder='gender'
-// 								name='gender'
-							
-// 							/>
-// 						</div>
-// 						<div className='form-group'>
-// 							<input
-// 								type='text'
-// 								className='form-control'
-// 								placeholder='phone'
-// 								name='phone'
-							
-// 							/>
-// 						</div>
-// 					</div>
-// 					<div className='form-pair'>
-// 						<div className='form-group'>
-// 							<input
-// 								type='text'
-// 								className='form-control'
-// 								placeholder='address'
-// 								name='address'
-								
-// 							/>
-// 						</div>
-// 					</div>
-
-// 					<div>
-// 						<input type='submit' className='btnSubmit' value='Register' />
-// 					</div>
-// 				</form>
-// 			</div>
-// 		</div>
-// 	)
-// }
-
-
 import { AppBar, Box, IconButton, Toolbar, Typography } from '@mui/material';
 import { Suspense } from 'react';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { Outlet } from 'react-router-dom';
 import { Sidebar } from '../components/Sidebar';
+import { useAuthStore } from '../hooks/useAuthStore';
 
 
 export const AdminApp = ({ ...rest }) => {	
-	const pathName = window.location.pathname
+	const pathName = window.location.pathname;
+	const {startLogout} = useAuthStore();
+
+	const handleLogout = () => {
+		startLogout();
+	}
 	
 
 	return (
@@ -133,12 +29,28 @@ export const AdminApp = ({ ...rest }) => {
 				<Box sx={{ flexGrow: 1, width: '100%' }}>
 					<AppBar position='static' sx={{ backgroundColor: '#fff', color: '#000' }}>
 						<Toolbar>
-							<IconButton size='large' edge='start' color='inherit' aria-label='menu' sx={{ mr: 2 }}>
+							<IconButton 
+								size='large' 
+								edge='start' 
+								color='inherit' 
+								aria-label='menu' 
+								sx={{ mr: 2 }}
+							>
 								<ArrowBackIcon />
 							</IconButton>
 							<Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
 								{pathName}
 							</Typography>
+							<IconButton 
+								size='large' 
+								edge='start' 
+								color='primary' 
+								aria-label='menu' 
+								sx={{ mr: 2 }}
+								onClick={handleLogout}
+							>
+								<LogoutIcon />
+							</IconButton>
 						</Toolbar>
 					</AppBar>
 				</Box>
