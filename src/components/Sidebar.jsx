@@ -21,7 +21,7 @@ export const Sidebar = () => {
 			</Box>
 			<Divider sx={{ backgroundColor: '#fff' }} />
 			<List>
-				<ListItem button="true" component='a' href='/admin/user-page' sx={{ active: { color: 'red' } }}>
+				<ListItem button="true" component='a' href='/admin/user-register' sx={{ active: { color: 'red' } }}>
 					<ListItemIcon>
 						<PersonIcon sx={{ color: '#fff' }} />
 					</ListItemIcon>

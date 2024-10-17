@@ -3,7 +3,8 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { useAuthStore } from '../hooks/useAuthStore';
 import { LoginPage } from '../auth/pages/LoginPage';
 import { RegisterPage } from '../auth/pages/RegisterPage';
-import { AdminApp } from '../Admin/AdminApp';
+import { AdminApp } from '../admin/AdminApp';
+import { UserRegister } from '../user/UserRegister/UserREgister';
 
 export const AppRouter = () => {
     const { status, checkAuthToken } = useAuthStore();
@@ -23,7 +24,11 @@ export const AppRouter = () => {
                         <Route path="/*" element={ <Navigate to="/auth/login" /> } />
                    </>)
                 : (<>
-                        <Route path="/" element={ <AdminApp /> } />
+                        <Route path='/admin' element={<AdminApp />}>
+                            <Route path="/admin/user-register" element={ <UserRegister /> } />
+                            <Route path='*' element={<Navigate to='/admin/user-register' replace />} />
+                        </Route>
+                        
                         <Route path="/*" element={ <Navigate to="/" /> } />
                    </>)
             }

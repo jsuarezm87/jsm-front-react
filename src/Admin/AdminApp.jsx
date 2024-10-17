@@ -109,31 +109,16 @@
 // }
 
 
-// Third Party Dependencies.
 import { AppBar, Box, IconButton, Toolbar, Typography } from '@mui/material';
-import { useState, createRef, useEffect, Suspense } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { Suspense } from 'react';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { useNavigate, Outlet, Route } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { Sidebar } from '../components/Sidebar';
 
 
-// export default function LoginPageApp({ ...rest }) {
-  export const AdminApp = () => {
-	// States and Variables.
-	// const navigate = useNavigate()
-	// Getting path name.
+export const AdminApp = ({ ...rest }) => {	
 	const pathName = window.location.pathname
-	// const dispatch = useDispatch()
-
-	// const { userInfo } = useSelector((state) => state.userLogin)
-
-	// useEffect(() => {
-	// 	dispatch(refreshToken())
-	// 	if (!userInfo) {
-	// 		navigate('/auth/login')
-	// 	}
-	// }, [window.location.pathname])
+	
 
 	return (
 		<Box
