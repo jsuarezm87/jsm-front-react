@@ -18,6 +18,7 @@ const registerFormFields = {
 }
 
 export const UserRegister = () => {
+	
 	// const dispatch = useDispatch()
 	// const { successRegisterUsers } = useSelector((state) => state.registerUser)
 	// const [userRegisterSuccess, setUserRegisterSuccess] = useState(false)
@@ -86,6 +87,7 @@ export const UserRegister = () => {
 								className='form-control'
 								placeholder='name'
 								name='name'
+								width={{ width: '500px' }}
 								// value={name}
 								// onChange={onRegisterInputChange}
 							/>
@@ -100,9 +102,52 @@ export const UserRegister = () => {
 								// onChange={onRegisterInputChange}
 							/>
 						</div>
+						<div className='form-group'>
+							<input
+								type='text'
+								className='form-control'
+								placeholder='identification'
+								name='identification'
+								// value={lastName}
+								// onChange={onRegisterInputChange}
+							/>
+						</div>
 					</div>
 					<div className='form-pair'>
 						<div className='form-group'>
+							<input
+								type='text'
+								className='form-control'
+								placeholder='address'
+								name='address'
+								// value={lastName}
+								// onChange={onRegisterInputChange}
+							/>
+						</div>
+						<div className='form-group'>
+							<input
+								type='text'
+								className='form-control'
+								placeholder='phone'
+								name='phone'
+								// value={lastName}
+								// onChange={onRegisterInputChange}
+							/>
+						</div>
+						<div className='form-group'>
+							<input
+								type='text'
+								className='form-control'
+								placeholder='phone2'
+								name='phone2'
+								// value={lastName}
+								// onChange={onRegisterInputChange}
+							/>
+						</div>						
+						
+					</div>
+					<div className='form-pair'>
+					<div className='form-group'>
 							<input
 								type='text'
 								className='form-control'
@@ -116,48 +161,24 @@ export const UserRegister = () => {
 							<input
 								type='text'
 								className='form-control'
-								placeholder='password'
-								name='password'
-								// value={password}
-								// onChange={onRegisterInputChange}
-							/>
-						</div>
-					</div>
-					<div className='form-pair'>
-						<div className='form-group'>
-							<input
-								type='text'
-								className='form-control'
-								placeholder='gender'
-								name='gender'
-								// value={gender}
-								// onChange={onRegisterInputChange}
-							/>
-						</div>
-						<div className='form-group'>
-							<input
-								type='text'
-								className='form-control'
-								placeholder='phone'
-								name='phone'
+								placeholder='status'
+								name='status'
 								// value={phone}
 								// onChange={onRegisterInputChange}
 							/>
 						</div>
-					</div>
-					<div className='form-pair'>
 						<div className='form-group'>
 							<input
 								type='text'
 								className='form-control'
-								placeholder='address'
-								name='address'
+								placeholder='managedBy'
+								name='managedBy'
 								// value={address}
 								// onChange={onRegisterInputChange}
 							/>
 						</div>
 					</div>
-
+					
 					<div>
 						<input type='submit' className='btnSubmit' value='Register' />
 					</div>

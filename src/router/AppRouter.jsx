@@ -4,7 +4,7 @@ import { useAuthStore } from '../hooks/useAuthStore';
 import { LoginPage } from '../auth/pages/LoginPage';
 import { RegisterPage } from '../auth/pages/RegisterPage';
 import { AdminApp } from '../admin/AdminApp';
-import { UserRegister } from '../user/UserRegister/UserREgister';
+import { UserRegister } from '../user/UserRegister/UserRegister';
 
 export const AppRouter = () => {
     const { status, checkAuthToken } = useAuthStore();
