@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import './LoginPage.css';
 import { useAuthStore } from '../../hooks/useAuthStore';
 import { useForm } from '../../hooks/useForm';
+import { Link } from 'react-router-dom';
 
 const registerFormFields = {
     registerName:      '',
@@ -88,6 +89,9 @@ export const RegisterPage = () => {
                             value="Crear cuenta" />
                     </div>
                 </form>
+                <div className="ForgetPwd">
+                        ¿Ya tienes una cuenta? <Link to="/auth/">Inicia sesion</Link>
+                    </div>            
             </div>
         </div>
     )
