@@ -74,10 +74,10 @@ export const UserRegister = () => {
 	// }
 
 	return (
-		<div className='login-container'>
+		<div className='user-container'>
 			<div>
-				{/* <form onSubmit={registerSubmit} className='login-form'> */}
-				<form className='login-form'>
+				{/* <form onSubmit={registerSubmit} className='user-form'> */}
+				<form className='user-form'>
 					<h3>User register</h3>
 					<div className='form-pair'>
 						<div className='form-group'>

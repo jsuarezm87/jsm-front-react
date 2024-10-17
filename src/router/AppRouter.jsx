@@ -29,7 +29,7 @@ export const AppRouter = () => {
                             <Route path='*' element={<Navigate to='/admin/user-register' replace />} />
                         </Route>
                         
-                        <Route path="/*" element={ <Navigate to="/" /> } />
+                        <Route path="/*" element={ <Navigate to="/admin" /> } />
                    </>)
             }
         </Routes>
