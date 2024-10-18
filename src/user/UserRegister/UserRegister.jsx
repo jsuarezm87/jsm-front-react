@@ -100,8 +100,8 @@ export const UserRegister = () => {
 								placeholder='name'
 								name='name'
 								width={{ width: '500px' }}
-								// value={name}
-								// onChange={onRegisterInputChange}
+								value={name}
+								onChange={onRegisterInputChange}
 							/>
 						</div>
 						<div className='form-group'>
@@ -110,8 +110,8 @@ export const UserRegister = () => {
 								className='form-control'
 								placeholder='lastName'
 								name='lastName'
-								// value={lastName}
-								// onChange={onRegisterInputChange}
+								value={lastName}
+								onChange={onRegisterInputChange}
 							/>
 						</div>
 						<div className='form-group'>
@@ -120,8 +120,8 @@ export const UserRegister = () => {
 								className='form-control'
 								placeholder='identification'
 								name='identification'
-								// value={lastName}
-								// onChange={onRegisterInputChange}
+								value={identification}
+								onChange={onRegisterInputChange}
 							/>
 						</div>
 					</div>
@@ -132,8 +132,8 @@ export const UserRegister = () => {
 								className='form-control'
 								placeholder='address'
 								name='address'
-								// value={lastName}
-								// onChange={onRegisterInputChange}
+								value={address}
+								onChange={onRegisterInputChange}
 							/>
 						</div>
 						<div className='form-group'>
@@ -142,8 +142,8 @@ export const UserRegister = () => {
 								className='form-control'
 								placeholder='phone'
 								name='phone'
-								// value={lastName}
-								// onChange={onRegisterInputChange}
+								value={phone}
+								onChange={onRegisterInputChange}
 							/>
 						</div>
 						<div className='form-group'>
@@ -152,8 +152,8 @@ export const UserRegister = () => {
 								className='form-control'
 								placeholder='phone2'
 								name='phone2'
-								// value={lastName}
-								// onChange={onRegisterInputChange}
+								value={phone2}
+								onChange={onRegisterInputChange}
 							/>
 						</div>						
 						
@@ -165,20 +165,10 @@ export const UserRegister = () => {
 								className='form-control'
 								placeholder='email'
 								name='email'
-								// value={email}
-								// onChange={onRegisterInputChange}
+								value={email}
+								onChange={onRegisterInputChange}
 							/>
 						</div>
-						{/* <div className='form-group'>
-							<input
-								type='text'
-								className='form-control'
-								placeholder='status'
-								name='status'
-								// value={phone}
-								// onChange={onRegisterInputChange}
-							/>
-						</div> */}
                         <div className='form-group'>
                             <select
                                 className='form-control'
