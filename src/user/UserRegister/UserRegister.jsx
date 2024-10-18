@@ -1,10 +1,6 @@
-import { useState, useEffect, useMemo } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import {  useMemo } from 'react';
 import { useForm } from '../../hooks/useForm';
 import { useAuthStore } from '../../hooks/useAuthStore';
-// import { registerUser } from '../../../redux/actions/userActions';
-
-// import { USER_REGISTER_RESET } from '../../../redux/constants/userConstants';
 import Swal from 'sweetalert2';
 import './styles/UserRegister.css';
 
