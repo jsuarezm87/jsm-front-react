@@ -10,10 +10,9 @@ import { UserRegister } from '../user/UserRegister/UserRegister';
 
 export const AppRouter = () => {
     const { status, user, checkAuthToken } = useAuthStore();
-    console.log('-user: ', user)
 
     useEffect(() => {
-        checkAuthToken(user.email);
+        checkAuthToken();
     }, []);
     
     if (status === 'checking') return (<h2>Cargando...</h2>);    

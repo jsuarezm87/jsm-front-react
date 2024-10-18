@@ -21,7 +21,7 @@ export const UserRegister = () => {
 		phone: '', 
 		phone2: '',  
 		email: '',  
-		status: '',  
+		status: 'ACTIVO',  
 		managedBy: user?.email || ''  
 	}), [user.email]);
 
@@ -169,7 +169,7 @@ export const UserRegister = () => {
 								// onChange={onRegisterInputChange}
 							/>
 						</div>
-						<div className='form-group'>
+						{/* <div className='form-group'>
 							<input
 								type='text'
 								className='form-control'
@@ -178,7 +178,18 @@ export const UserRegister = () => {
 								// value={phone}
 								// onChange={onRegisterInputChange}
 							/>
-						</div>
+						</div> */}
+                        <div className='form-group'>
+                            <select
+                                className='form-control'
+                                name='status'
+                                value={status} 
+                                onChange={onRegisterInputChange}
+                            >
+                                <option value="ACTIVO">ACTIVO</option>
+                                <option value="INACTIVO">INACTIVO</option>
+                            </select>
+                        </div>
 						<div className='form-group'>
 							<input
 								type='text'
