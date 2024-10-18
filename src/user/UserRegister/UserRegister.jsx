@@ -113,7 +113,7 @@ export const UserRegister = () => {
 						</div>
 						<div className='form-group'>
 							<input
-								type='text'
+								type='number'
 								className='form-control'
 								placeholder='identification'
 								name='identification'
