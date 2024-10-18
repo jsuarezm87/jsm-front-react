@@ -3,12 +3,14 @@ import { useForm } from '../../hooks/useForm';
 import { useAuthStore } from '../../hooks/useAuthStore';
 import Swal from 'sweetalert2';
 import './styles/CustomerRegister.css';
+import { useCustomerStore } from '../../hooks/useCustomerStore';
 
 
 
 export const CustomerRegister = () => {
 
 	const { user } = useAuthStore();
+	const { registerCustomer, status: statusCustomer, customer, errorMessage} = useCustomerStore();
 
 	const registerFormFields = useMemo(() => ({
 		name: '', 
@@ -68,26 +70,26 @@ export const CustomerRegister = () => {
 
 
 
-	// const registerSubmit = (event) => {
-	// 	event.preventDefault()
-	// 	dispatch(
-	// 		registerUser({
-	// 			name,
-	// 			lastName,
-	// 			email,
-	// 			password,
-	// 			gender,
-	// 			phone,
-	// 			address,
-	// 		}),
-	// 	)
-	// }
+	const registerSubmit = (event) => {
+		event.preventDefault();
+		registerCustomer({
+			name, 
+			lastName, 
+			identification, 
+			address, 
+			phone, 
+			phone2,  
+			email,  
+			status,  
+			managedBy
+		});		
+	}
 
 	return (
 		<div className='user-container'>
 			<div>
-				{/* <form onSubmit={registerSubmit} className='user-form'> */}
-				<form className='user-form'>
+				<form onSubmit={registerSubmit} className='user-form'>
+				{/* <form className='user-form'> */}
 					<h3>Customer register</h3>
 					<div className='form-pair'>
 						<div className='form-group'>
