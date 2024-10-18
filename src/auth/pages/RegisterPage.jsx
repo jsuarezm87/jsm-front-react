@@ -15,7 +15,8 @@ const registerFormFields = {
 
 export const RegisterPage = () => {
 
-    const { startRegister, errorMessage } = useAuthStore();
+    const { startRegister, errorMessage, status, startRegisterLogin } = useAuthStore();
+    
     const { registerEmail, registerName, registerPassword, registerPassword2, onInputChange:onRegisterInputChange } = useForm(registerFormFields);
 
     const registerSubmit = ( event ) => {
@@ -26,15 +27,29 @@ export const RegisterPage = () => {
         }
         startRegister({ name: registerName, email: registerEmail, password: registerPassword });
     }
+  
+    useEffect(() => {
+        if (status === 'registered') {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'successfully registered user',
+                showConfirmButton: false,
+                timer: 2000,
+            });
+
+            startRegisterLogin();
+        }
+    },[status])
 
 
     useEffect(() => {
       if ( errorMessage !== undefined ) {
         Swal.fire('Error en la autenticación', errorMessage, 'error');
       }    
-    }, [errorMessage])
-    
+    }, [errorMessage]);
 
+   
     return (
         <div className="login-container">
             <div className="login-form">       

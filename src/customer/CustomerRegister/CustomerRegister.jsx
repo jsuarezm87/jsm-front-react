@@ -24,35 +24,6 @@ export const CustomerRegister = () => {
 		managedBy: user?.email || ''  
 	}), [user.email]);
 
-	
-	
-	// const dispatch = useDispatch();
-	// const { successRegisterUsers } = useSelector((state) => state.registerUser)
-	// const [userRegisterSuccess, setUserRegisterSuccess] = useState(false)
-
-	// useEffect(() => {
-	// 	setUserRegisterSuccess(successRegisterUsers)
-	// }, [successRegisterUsers])
-
-	// useEffect(() => {
-	// 	if (userRegisterSuccess) {
-	// 		Swal.fire({
-	// 			position: 'center',
-	// 			icon: 'success',
-	// 			title: 'successfully registered user',
-	// 			showConfirmButton: false,
-	// 			timer: 2000,
-	// 		})
-
-	// 		confirmSuccess()
-	// 	}
-	// }, [userRegisterSuccess])
-
-	// const confirmSuccess = () => {
-	// 	onResetForm()
-	// 	dispatch({ type: USER_REGISTER_RESET })
-	// 	setUserRegisterSuccess(false)
-	// }
 
 	const {
 		name, 

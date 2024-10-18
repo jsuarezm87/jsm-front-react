@@ -8,9 +8,8 @@ import { CustomerRegister } from '../customer/CustomerRegister/CustomerRegister'
 
 
 
-
 export const AppRouter = () => {
-    const { status, user, checkAuthToken } = useAuthStore();
+    const { status, checkAuthToken } = useAuthStore();
 
     useEffect(() => {
         checkAuthToken();
@@ -20,20 +19,20 @@ export const AppRouter = () => {
     
     return (
         <Routes>
-            {(status === 'not-authenticated')  
+            {(status === 'authenticated')  
                 ? (<>
-                        <Route path="/auth/*" element={ <LoginPage /> } />
-                        <Route path="/auth/register/" element={ <RegisterPage /> } />
-                        <Route path="/*" element={ <Navigate to="/auth/login" /> } />
-                   </>)
+                    <Route path='/admin' element={<AdminApp />}>
+                        <Route path="/admin/customer-register" element={ <CustomerRegister /> } />
+                        <Route path='*' element={<Navigate to='/admin/customer-register' replace />} />
+                    </Route>
+                    
+                    <Route path="/*" element={ <Navigate to="/admin" /> } />
+               </>)
                 : (<>
-                        <Route path='/admin' element={<AdminApp />}>
-                            <Route path="/admin/customer-register" element={ <CustomerRegister /> } />
-                            <Route path='*' element={<Navigate to='/admin/customer-register' replace />} />
-                        </Route>
-                        
-                        <Route path="/*" element={ <Navigate to="/admin" /> } />
-                   </>)
+                    <Route path="/auth/*" element={ <LoginPage /> } />
+                    <Route path="/auth/register/" element={ <RegisterPage /> } />
+                    <Route path="/*" element={ <Navigate to="/auth/login" /> } />
+               </>)
             }
         </Routes>
     )

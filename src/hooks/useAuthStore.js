@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { clearErrorMessage, onChecking, onLogin, onLogout } from '../store/auth/authSlice';
+import { clearErrorMessage, onChecking, onLogin, onLogout, onRegister, onRegisterLogin } from '../store/auth/authSlice';
 import loginApi from '../api/loginApi';
 
 export const useAuthStore = () => {
@@ -31,8 +31,19 @@ export const useAuthStore = () => {
             localStorage.setItem('token', data.token );
             localStorage.setItem('jsm-email', data.email );
             localStorage.setItem('token-init-date', new Date().getTime() );
-            dispatch( onLogin({ name: data.name, uid: data.uid, email: data.email }) );
+            dispatch( onRegister({ name: data.name, uid: data.uid, email: data.email }) );
             
+        } catch (error) {
+            dispatch( onLogout( error.response.data?.msg || '--' ) );
+            setTimeout(() => {
+                dispatch( clearErrorMessage() );
+            }, 10);
+        }
+    }
+
+    const startRegisterLogin = async() => {       
+        try {           
+            dispatch( onRegisterLogin() );            
         } catch (error) {
             dispatch( onLogout( error.response.data?.msg || '--' ) );
             setTimeout(() => {
@@ -72,6 +83,7 @@ export const useAuthStore = () => {
         checkAuthToken,
         user, 
         startRegister,
+        startRegisterLogin
     }
 
 }
