@@ -2,11 +2,11 @@ import {  useMemo } from 'react';
 import { useForm } from '../../hooks/useForm';
 import { useAuthStore } from '../../hooks/useAuthStore';
 import Swal from 'sweetalert2';
-import './styles/UserRegister.css';
+import './styles/CustomerRegister.css';
 
 
 
-export const UserRegister = () => {
+export const CustomerRegister = () => {
 
 	const { user } = useAuthStore();
 
@@ -88,7 +88,7 @@ export const UserRegister = () => {
 			<div>
 				{/* <form onSubmit={registerSubmit} className='user-form'> */}
 				<form className='user-form'>
-					<h3>User register</h3>
+					<h3>Customer register</h3>
 					<div className='form-pair'>
 						<div className='form-group'>
 							<input

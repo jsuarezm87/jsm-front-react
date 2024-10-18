@@ -4,7 +4,8 @@ import { useAuthStore } from '../hooks/useAuthStore';
 import { LoginPage } from '../auth/pages/LoginPage';
 import { RegisterPage } from '../auth/pages/RegisterPage';
 import { AdminApp } from '../admin/AdminApp';
-import { UserRegister } from '../user/UserRegister/UserRegister';
+import { CustomerRegister } from '../customer/CustomerRegister/CustomerRegister';
+
 
 
 
@@ -27,8 +28,8 @@ export const AppRouter = () => {
                    </>)
                 : (<>
                         <Route path='/admin' element={<AdminApp />}>
-                            <Route path="/admin/user-register" element={ <UserRegister /> } />
-                            <Route path='*' element={<Navigate to='/admin/user-register' replace />} />
+                            <Route path="/admin/customer-register" element={ <CustomerRegister /> } />
+                            <Route path='*' element={<Navigate to='/admin/customer-register' replace />} />
                         </Route>
                         
                         <Route path="/*" element={ <Navigate to="/admin" /> } />

@@ -32,14 +32,14 @@ export const Sidebar = () => {
 				<ListItem 
 					button="true" 
 					component='a' 
-					href='/admin/user-register' 
+					href='/admin/customer-register' 
 					sx={{ active: { color: 'red' } }}
-					onClick={(event) => handleClick(event, '/admin/user-register')}
+					onClick={(event) => handleClick(event, '/admin/customer-register')}
 				>
 					<ListItemIcon>
 						<PersonIcon sx={{ color: '#fff' }} />
 					</ListItemIcon>
-					<ListItemText primary='Usuarios' sx={{ color: '#fff' }}/>
+					<ListItemText primary='Customer' sx={{ color: '#fff' }}/>
 				</ListItem>
 			</List>
 		</Box>
