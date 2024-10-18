@@ -4,7 +4,7 @@ import loginApi from '../api/loginApi';
 
 export const useCustomerStore = () => {
 
-    const {status, customer, errorMessage} = useSelector(state => state.customer);
+    const {status, customerCreated, errorMessage} = useSelector(state => state.customer);
     const dispatch = useDispatch();
 
     const registerCustomer = async(customer) => {
@@ -25,7 +25,7 @@ export const useCustomerStore = () => {
     return {
         registerCustomer,
         status, 
-        customer, 
+        customerCreated, 
         errorMessage
     }
 

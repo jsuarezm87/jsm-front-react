@@ -10,7 +10,7 @@ import { useCustomerStore } from '../../hooks/useCustomerStore';
 export const CustomerRegister = () => {
 
 	const { user } = useAuthStore();
-	const { registerCustomer, status: statusCustomer, customer, errorMessage} = useCustomerStore();
+	const { registerCustomer, status: statusCustomer, customerCreated, errorMessage} = useCustomerStore();
 
 	const registerFormFields = useMemo(() => ({
 		name: '', 

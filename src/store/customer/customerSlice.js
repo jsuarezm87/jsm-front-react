@@ -4,23 +4,23 @@ export const customerSlice = createSlice({
     name: 'customer',
     initialState: {
         status: 'checking',
-        customer: {},
+        customerCreated: {},
         errorMessage: undefined,
     },
     reducers: {
         onChecking: (state) => {
             state.status = 'checking';
-            state.customer   = {};
+            state.customerCreated   = {};
             state.errorMessage = undefined;
         },
         onCreateCustomer: (state, { payload }) => {
             state.status = 'customer-created';
-            state.customer = payload;
+            state.customerCreated = payload;
             state.errorMessage = undefined;
         },
         onCreateCustomerError: (state, { payload }) => {
             state.status = 'customer-error-created';
-            state.customer = {};
+            state.customerCreated = {};
             state.errorMessage = payload;
         },
         clearErrorMessage: (state) => {
