@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from '../../hooks/useForm';
+import { useAuthStore } from '../../hooks/useAuthStore';
 // import { registerUser } from '../../../redux/actions/userActions';
 
 // import { USER_REGISTER_RESET } from '../../../redux/constants/userConstants';
@@ -11,7 +12,7 @@ import './styles/UserRegister.css';
 
 export const UserRegister = () => {
 
-	const { user } = useSelector((state) => state.auth);
+	const { user } = useAuthStore();
 
 	const registerFormFields = useMemo(() => ({
 		name: '', 
