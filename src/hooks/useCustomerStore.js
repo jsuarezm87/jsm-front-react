@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { onCreateCustomer, onCreateCustomerError, clearErrorMessage  } from '../store/customer/customerSlice';
+import { onCreateCustomer, onCreateCustomerError, clearErrorMessage, onCheckingCustomer  } from '../store/customer/customerSlice';
 import loginApi from '../api/loginApi';
+import { getErrors } from '../helpers/getErrors';
 
 export const useCustomerStore = () => {
 
@@ -9,15 +10,22 @@ export const useCustomerStore = () => {
 
     const registerCustomer = async(customer) => {
         try {
-            const { data } = await loginApi.post('/customer/create', customer);;
+            const { data } = await loginApi.post('/customer/create', customer);            
             dispatch( onCreateCustomer({ ...data }) );
             
         } catch (error) {
-            dispatch( onCreateCustomerError( error.response.data?.msg || '--' ) );
-            setTimeout(() => {
-                dispatch( clearErrorMessage() );
-            }, 10);
+            console.log('error: ', error);
+            const errors = getErrors(error);
+            dispatch( onCreateCustomerError( errors || '--' ) );
         }
+    }
+
+    const checkingCustomer = () => {
+        try {           
+            dispatch( onCheckingCustomer() );            
+        } catch (error) {
+            dispatch( onCreateCustomerError( error || '--' ) );
+        }        
     }
 
 
@@ -25,7 +33,8 @@ export const useCustomerStore = () => {
         registerCustomer,
         statusCustomer, 
         customerCreated, 
-        errorMessage
+        errorMessage,
+        checkingCustomer
     }
 
 }

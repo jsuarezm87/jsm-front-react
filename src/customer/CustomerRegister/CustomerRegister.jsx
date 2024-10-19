@@ -10,7 +10,7 @@ import { useCustomerStore } from '../../hooks/useCustomerStore';
 export const CustomerRegister = () => {
 
 	const { user } = useAuthStore();
-	const { registerCustomer, statusCustomer, customerCreated, errorMessage} = useCustomerStore();
+	const { registerCustomer, statusCustomer, checkingCustomer, errorMessage} = useCustomerStore();
 
 	const registerFormFields = useMemo(() => ({
 		name: '', 
@@ -65,9 +65,25 @@ export const CustomerRegister = () => {
                 showConfirmButton: false,
                 timer: 2000,
             });
+			onResetForm();
+			checkingCustomer();
         }
 	
 	}, [statusCustomer]);
+
+	useEffect(() => {
+
+		if (errorMessage) {			
+			Swal.fire({
+				position: 'center',
+				icon: 'error',
+				title: errorMessage,
+				showConfirmButton: true
+			});			
+		}
+
+	}, [errorMessage]);
+	
 	
 
 	return (

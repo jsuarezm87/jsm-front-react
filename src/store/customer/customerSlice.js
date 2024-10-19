@@ -18,6 +18,9 @@ export const customerSlice = createSlice({
             state.customerCreated = {};
             state.errorMessage = payload;
         },
+        onCheckingCustomer: (state) => {
+            state.statusCustomer = 'customer-finished';
+        },
         clearErrorMessage: (state) => {
             state.errorMessage = undefined;
         }
@@ -27,5 +30,6 @@ export const customerSlice = createSlice({
 export const { 
     onCreateCustomer, 
     onCreateCustomerError,
-    clearErrorMessage 
+    clearErrorMessage,
+    onCheckingCustomer 
 } = customerSlice.actions;

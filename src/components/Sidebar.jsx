@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { Box, Divider, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
+import ListAltIcon from '@mui/icons-material/ListAlt';
 import { useNavigate } from 'react-router-dom';
 
 export const Sidebar = () => {
@@ -40,6 +41,19 @@ export const Sidebar = () => {
 						<PersonIcon sx={{ color: '#fff' }} />
 					</ListItemIcon>
 					<ListItemText primary='Customer' sx={{ color: '#fff' }}/>
+				</ListItem>
+
+				<ListItem 
+					button="true" 
+					component='a' 
+					href='/admin/customer-register' 
+					sx={{ active: { color: 'red' } }}
+					onClick={(event) => handleClick(event, '/admin/customer-list')}
+				>
+					<ListItemIcon>
+						<ListAltIcon sx={{ color: '#fff' }} />
+					</ListItemIcon>
+					<ListItemText primary='List' sx={{ color: '#fff' }}/>
 				</ListItem>
 			</List>
 		</Box>

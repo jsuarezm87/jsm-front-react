@@ -5,6 +5,7 @@ import { LoginPage } from '../auth/pages/LoginPage';
 import { RegisterPage } from '../auth/pages/RegisterPage';
 import { AdminApp } from '../admin/AdminApp';
 import { CustomerRegister } from '../customer/CustomerRegister/CustomerRegister';
+import { CustomerList } from '../customer/CustomerList/CustomerList';
 
 
 
@@ -23,6 +24,7 @@ export const AppRouter = () => {
                 ? (<>
                     <Route path='/admin' element={<AdminApp />}>
                         <Route path="/admin/customer-register" element={ <CustomerRegister /> } />
+                        <Route path="/admin/customer-list" element={ <CustomerList /> } />
                         <Route path='*' element={<Navigate to='/admin/customer-register' replace />} />
                     </Route>
                     
