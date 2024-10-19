@@ -90,7 +90,7 @@ export const CustomerList = () => {
     <>
       <Header elevation={0}>
         <Typography variant='h4' gutterBottom>
-          Users
+          Customers
         </Typography>
       </Header>
       <GridContainer>
@@ -99,11 +99,14 @@ export const CustomerList = () => {
             <TableHead>
               <TableRow>
                 <TableCell>Name</TableCell>
-                <TableCell>Email</TableCell>
+                <TableCell>Last Name</TableCell>
+                <TableCell>Identification</TableCell>
                 <TableCell>Address</TableCell>
                 <TableCell>Phone</TableCell>
-                <TableCell>Gender</TableCell>
-                <TableCell>Actions</TableCell>
+                <TableCell>Phone 2</TableCell>
+                <TableCell>Email</TableCell>
+                <TableCell>Status</TableCell>
+                <TableCell>Managed By</TableCell>
               </TableRow>
             </TableHead>
             {/* <TableBody>
