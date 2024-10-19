@@ -1,9 +1,10 @@
-import {  useEffect, useMemo } from 'react';
+import {  useEffect, useMemo, useState } from 'react';
 import { useForm } from '../../hooks/useForm';
 import { useAuthStore } from '../../hooks/useAuthStore';
 import Swal from 'sweetalert2';
 import './styles/CustomerRegister.css';
 import { useCustomerStore } from '../../hooks/useCustomerStore';
+import { Span } from '../../components/Span';
 
 
 
@@ -11,6 +12,7 @@ export const CustomerRegister = () => {
 
 	const { user } = useAuthStore();
 	const { registerCustomer, statusCustomer, checkingCustomer, errorMessage} = useCustomerStore();
+	const [errors, setErrors] = useState({});
 
 	const registerFormFields = useMemo(() => ({
 		name: '', 
@@ -72,16 +74,7 @@ export const CustomerRegister = () => {
 	}, [statusCustomer]);
 
 	useEffect(() => {
-
-		if (errorMessage) {			
-			Swal.fire({
-				position: 'center',
-				icon: 'error',
-				title: errorMessage,
-				showConfirmButton: true
-			});			
-		}
-
+		setErrors(errorMessage);
 	}, [errorMessage]);
 	
 	
@@ -103,6 +96,7 @@ export const CustomerRegister = () => {
 								value={name}
 								onChange={onRegisterInputChange}
 							/>
+							<Span error={errors?.name?.msg}/>
 						</div>
 						<div className='form-group'>
 							<input
@@ -113,6 +107,7 @@ export const CustomerRegister = () => {
 								value={lastName}
 								onChange={onRegisterInputChange}
 							/>
+							<Span error={errors?.lastName?.msg}/>
 						</div>
 						<div className='form-group'>
 							<input
@@ -123,6 +118,7 @@ export const CustomerRegister = () => {
 								value={identification}
 								onChange={onRegisterInputChange}
 							/>
+							<Span error={errors?.identification?.msg}/>
 						</div>
 					</div>
 					<div className='form-pair'>
@@ -135,6 +131,7 @@ export const CustomerRegister = () => {
 								value={address}
 								onChange={onRegisterInputChange}
 							/>
+							<Span error={errors?.address?.msg}/>
 						</div>
 						<div className='form-group'>
 							<input
@@ -145,6 +142,7 @@ export const CustomerRegister = () => {
 								value={phone}
 								onChange={onRegisterInputChange}
 							/>
+							<Span error={errors?.phone?.msg}/>
 						</div>
 						<div className='form-group'>
 							<input
@@ -155,11 +153,12 @@ export const CustomerRegister = () => {
 								value={phone2}
 								onChange={onRegisterInputChange}
 							/>
+							<Span error={errors?.phone2?.msg}/>
 						</div>						
 						
 					</div>
 					<div className='form-pair'>
-					<div className='form-group'>
+						<div className='form-group'>
 							<input
 								type='text'
 								className='form-control'
@@ -168,6 +167,7 @@ export const CustomerRegister = () => {
 								value={email}
 								onChange={onRegisterInputChange}
 							/>
+							<Span error={errors?.email?.msg}/>
 						</div>
                         <div className='form-group'>
                             <select

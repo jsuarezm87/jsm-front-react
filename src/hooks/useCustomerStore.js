@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { onCreateCustomer, onCreateCustomerError, clearErrorMessage, onCheckingCustomer  } from '../store/customer/customerSlice';
 import loginApi from '../api/loginApi';
-import { getErrors } from '../helpers/getErrors';
 
 export const useCustomerStore = () => {
 
@@ -15,8 +14,7 @@ export const useCustomerStore = () => {
             
         } catch (error) {
             console.log('error: ', error);
-            const errors = getErrors(error);
-            dispatch( onCreateCustomerError( errors || '--' ) );
+            dispatch( onCreateCustomerError( error.response.data.errors || '--' ) );
         }
     }
 
