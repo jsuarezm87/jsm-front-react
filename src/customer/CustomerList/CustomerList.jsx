@@ -24,6 +24,7 @@ import { styled } from '@mui/system';
 // import UpdateUserModal from './UpdateUserModal';
 import Swal from 'sweetalert2';
 import { useCustomerStore } from '../../hooks/useCustomerStore';
+import { CustomerUpdateModal } from '../CustomerUpdateModal/CustomerUpdateModal';
 
 // Componentes estilizados
 const Header = styled(Paper)(({ theme }) => ({
@@ -48,6 +49,8 @@ export const CustomerList = () => {
   const { listCustomer, statusCustomer, checkingCustomer, errorMessage, customerListAll} = useCustomerStore();
 
   const [customers, setCustomers] = useState([]);
+  const [updateCustomerModal, setUpdateCustomerModal] = useState(false);
+  const [showUpdateCustomer, setShowUpdateCustomer] = useState({});
 
   useEffect(() => {
     listCustomer();
@@ -58,6 +61,17 @@ export const CustomerList = () => {
       setCustomers(customerListAll);
     }
   }, [customerListAll]);
+
+  const showUpdateCustomerHandler = () => {
+		// const user = users.find((user) => user._id === id)
+		// setShowUpdateCustomer(user)
+		setUpdateCustomerModal(true);
+	}
+
+  const handleCloseModal = () => {
+		setUpdateCustomerModal(false);
+		setShowUpdateCustomer({});
+	}
 
   
 
@@ -98,9 +112,9 @@ export const CustomerList = () => {
 											<IconButton
 												color='primary'
 												aria-label='Edit'
-												// onClick={() => {
-												// 	showUpdateUserHandler(user._id)
-												// }}
+												onClick={() => {
+													showUpdateCustomerHandler()
+												}}
 											>
 												<EditNoteIcon style={{ fontSize: 20 }} />
 											</IconButton>
@@ -121,13 +135,12 @@ export const CustomerList = () => {
         </TableContainer>
       </GridContainer>
 
-      {/* {updateUserModal && (
-        <UpdateUserModal
-          handleCloseModal={handleCloseModal}
-          updateUserModal={updateUserModal}
-          showUpdateUser={showUpdateUser}
+      {updateCustomerModal && (
+        <CustomerUpdateModal
+          open={updateCustomerModal}
+          handleClose={handleCloseModal}
         />
-      )} */}
+      )}
 
     </>
   );
