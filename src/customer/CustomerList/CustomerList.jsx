@@ -25,9 +25,15 @@ import { useCustomerStore } from '../../hooks/useCustomerStore';
 
 // Componentes estilizados
 const Header = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.background.default,
+  color: theme.palette.primary.contrastText,
   padding: theme.spacing(2),
+  textAlign: 'center',
+  marginTop: theme.spacing(4),
+  marginLeft: theme.spacing(8),
+  marginRight: theme.spacing(8),
+  backgroundColor: 'lightgray',
 }));
+
 
 const GridContainer = styled('div')(({ theme }) => ({
   marginTop: theme.spacing(1),
@@ -59,7 +65,7 @@ export const CustomerList = () => {
         <Typography variant='h4' gutterBottom>
           Customers
         </Typography>
-      </Header>
+      </Header>      
       <GridContainer>
         <TableContainer component={Paper} elevation={0}>
           <Table>
