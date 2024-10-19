@@ -11,51 +11,54 @@ const FormContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const CustomerUpdateModal = ({ open, handleClose, customer }) => {
-    const [status, setStatus] = useState(customer.status || ""); 
+    // const [status, setStatus] = useState(customer.status || ""); 
 
-    const handleStatusChange = (event) => {
-        setStatus(event.target.value);
-    };
+    // const handleStatusChange = (event) => {
+    //     setStatus(event.target.value);
+    // };
+
+	
 
     return (
         <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
             <DialogTitle>Customer Information</DialogTitle>
             <DialogContent>
-                <FormContainer>					
+				<FormContainer>
+					<Box sx={{ flex: '1 1 30%', minWidth: 150, maxWidth: 200, marginBottom: 2 }}>
+						<TextField label="Name" name="name" fullWidth size="small" defaultValue={customer.name} />
+					</Box>
+					<Box sx={{ flex: '1 1 30%', minWidth: 150, maxWidth: 200, marginBottom: 2 }}>
+						<TextField label="Last Name" name="lastname" fullWidth size="small" defaultValue={customer.lastname} />
+					</Box>
+					<Box sx={{ flex: '1 1 30%', minWidth: 150, maxWidth: 200, marginBottom: 2 }}>
+						<TextField label="Address" name="address" fullWidth size="small" defaultValue={customer.address} />
+					</Box>
+					<Box sx={{ flex: '1 1 30%', minWidth: 150, maxWidth: 200, marginBottom: 2 }}>
+						<TextField label="Phone" name="phone" fullWidth size="small" defaultValue={customer.phone} />
+					</Box>
+					<Box sx={{ flex: '1 1 30%', minWidth: 150, maxWidth: 200, marginBottom: 2 }}>
+						<TextField label="Phone 2" name="phone2" fullWidth size="small" defaultValue={customer.phone2} />
+					</Box>
+					<Box sx={{ flex: '1 1 30%', minWidth: 150, maxWidth: 200, marginBottom: 2 }}>
+						<TextField label="Email" name="email" fullWidth size="small" defaultValue={customer.email} />
+					</Box>
+					<Box sx={{ flex: '1 1 30%', minWidth: 100, maxWidth: 180, marginBottom: 2 }}>
+						<FormControl fullWidth size="small">
+							<InputLabel>Status</InputLabel>
+							<Select 
+								label="Status" 
+								name="status" 
+								defaultValue={customer.status}
+								// value={status} 
+								// onChange={handleStatusChange}
+							>
+								<MenuItem value="ACTIVO">ACTIVO</MenuItem>
+								<MenuItem value="INACTIVO">INACTIVO</MenuItem>
+							</Select>
+						</FormControl>
+					</Box>
+			</FormContainer>
 
-                    <Box sx={{ flex: '1 1 30%', minWidth: 150, maxWidth: 200 }}>
-                        <TextField label="Name" name="name" fullWidth size="small" defaultValue={customer.name} />
-                    </Box>
-                    <Box sx={{ flex: '1 1 30%', minWidth: 150, maxWidth: 200 }}>
-                        <TextField label="Last Name" name="lastname" fullWidth size="small" defaultValue={customer.lastname} />
-                    </Box>
-                    <Box sx={{ flex: '1 1 30%', minWidth: 150, maxWidth: 200 }}>
-                        <TextField label="Address" name="address" fullWidth size="small" defaultValue={customer.address} />
-                    </Box>
-                    <Box sx={{ flex: '1 1 30%', minWidth: 150, maxWidth: 200 }}>
-                        <TextField label="Phone" name="phone" fullWidth size="small" defaultValue={customer.phone} />
-                    </Box>
-                    <Box sx={{ flex: '1 1 30%', minWidth: 150, maxWidth: 200 }}>
-                        <TextField label="Phone 2" name="phone2" fullWidth size="small" defaultValue={customer.phone2} />
-                    </Box>
-                    <Box sx={{ flex: '1 1 30%', minWidth: 150, maxWidth: 200 }}>
-                        <TextField label="Email" name="email" fullWidth size="small" defaultValue={customer.email} />
-                    </Box>
-                    <Box sx={{ flex: '1 1 30%', minWidth: 100, maxWidth: 180 }}>
-                        <FormControl fullWidth size="small">
-                            <InputLabel>Status</InputLabel>
-                            <Select 
-                                label="Status" 
-                                name="status" 
-                                value={status} 
-                                onChange={handleStatusChange}
-                            >
-                                <MenuItem value="ACTIVO">ACTIVO</MenuItem>
-                                <MenuItem value="INACTIVO">INACTIVO</MenuItem>
-                            </Select>
-                        </FormControl>
-                    </Box>
-                </FormContainer>
             </DialogContent>
             <DialogActions>				
                 <Button onClick={handleClose} color="secondary">
