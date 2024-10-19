@@ -1,4 +1,4 @@
-import React from 'react';;
+import React, { useEffect, useState } from 'react';;
 import {
   Typography,
   Grid,
@@ -21,6 +21,7 @@ import WcIcon from '@mui/icons-material/Wc';
 import { styled } from '@mui/system';
 // import UpdateUserModal from './UpdateUserModal';
 import Swal from 'sweetalert2';
+import { useCustomerStore } from '../../hooks/useCustomerStore';
 
 // Componentes estilizados
 const Header = styled(Paper)(({ theme }) => ({
@@ -35,56 +36,22 @@ const GridContainer = styled('div')(({ theme }) => ({
 }));
 
 export const CustomerList = () => {
-  // const [users, setUsers] = useState([]);
-  // const [userDeleteSuccess, setUserDeleteSuccess] = useState(false);
-  // const [updateUserModal, setUpdateUserModal] = useState(false);
-  // const [showUpdateUser, setShowUpdateUser] = useState({});
 
-  // const dispatch = useDispatch();
+  const { listCustomer, statusCustomer, checkingCustomer, errorMessage, customerListAll} = useCustomerStore();
 
-  // const { getUsersData } = useSelector((state) => state.getUser);
-  // const { successUserDelete } = useSelector((state) => state.userDelete);
+  const [customers, setCustomers] = useState([]);
 
-  // useEffect(() => {
-  //   dispatch(getAllUsers());
-  // }, []);
+  useEffect(() => {
+    listCustomer();
+  }, []);
 
-  // useEffect(() => {
-  //   setUsers(getUsersData?.users);
-  // }, [getUsersData]);
+   useEffect(() => {
+    if (customerListAll?.length > 0) {
+      setCustomers(customerListAll);
+    }
+  }, [customerListAll]);
 
-  // const handleDeleteUser = (id) => {
-  //   dispatch(deleteUser(id));
-  // };
-
-  // useEffect(() => {
-  //   setUserDeleteSuccess(successUserDelete);
-  // }, [successUserDelete]);
-
-  // useEffect(() => {
-  //   if (userDeleteSuccess) {
-  //     Swal.fire({
-  //       position: 'center',
-  //       icon: 'success',
-  //       title: 'Successfully deleted user',
-  //       showConfirmButton: false,
-  //       timer: 2000,
-  //     });
-
-  //     dispatch(getAllUsers());
-  //   }
-  // }, [userDeleteSuccess]);
-
-  // const showUpdateUserHandler = (id) => {
-  //   const user = users.find((user) => user._id === id);
-  //   setShowUpdateUser(user);
-  //   setUpdateUserModal(true);
-  // };
-
-  // const handleCloseModal = () => {
-  //   setUpdateUserModal(false);
-  //   setShowUpdateUser({});
-  // };
+  
 
   return (
     <>
@@ -109,48 +76,22 @@ export const CustomerList = () => {
                 <TableCell>Managed By</TableCell>
               </TableRow>
             </TableHead>
-            {/* <TableBody>
-              {users?.length > 0 &&
-                users?.map((user, index) => (
+            <TableBody>
+              {customers?.length > 0 &&
+                customers.map((customer, index) => (
                   <TableRow key={index}>
-                    <TableCell>
-                      <PersonIcon /> {`${user.name} ${user.lastName}`}
-                    </TableCell>
-                    <TableCell>
-                      <EmailIcon /> {user.email}
-                    </TableCell>
-                    <TableCell>
-                      <LocationOnIcon /> {user.address}
-                    </TableCell>
-                    <TableCell>
-                      <PhoneIcon /> {user.phone}
-                    </TableCell>
-                    <TableCell>
-                      <WcIcon /> {user.gender}
-                    </TableCell>
-                    <TableCell>
-                      <IconButton
-                        color='primary'
-                        aria-label='Edit'
-                        onClick={() => {
-                          showUpdateUserHandler(user._id);
-                        }}
-                      >
-                        <EditNoteIcon style={{ fontSize: 20 }} />
-                      </IconButton>
-                      <IconButton
-                        color='secondary'
-                        aria-label='Delete'
-                        onClick={() => {
-                          handleDeleteUser(user._id);
-                        }}
-                      >
-                        <DeleteSweepIcon style={{ fontSize: 20 }} />
-                      </IconButton>
-                    </TableCell>
+                    <TableCell>{customer.name}</TableCell>
+                    <TableCell>{customer.lastName}</TableCell>
+                    <TableCell>{customer.identification}</TableCell>
+                    <TableCell>{customer.address}</TableCell>
+                    <TableCell>{customer.phone}</TableCell>
+                    <TableCell>{customer.phone2}</TableCell>
+                    <TableCell>{customer.email}</TableCell>
+                    <TableCell>{customer.status}</TableCell>
+                    <TableCell>{customer.managedBy}</TableCell>
                   </TableRow>
                 ))}
-            </TableBody> */}
+            </TableBody>
           </Table>
         </TableContainer>
       </GridContainer>

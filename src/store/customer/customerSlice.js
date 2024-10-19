@@ -5,6 +5,7 @@ export const customerSlice = createSlice({
     initialState: {
         statusCustomer: 'pending',
         customerCreated: {},
+        customerListAll: [],	
         errorMessage: undefined,
     },
     reducers: {
@@ -21,6 +22,16 @@ export const customerSlice = createSlice({
         onCheckingCustomer: (state) => {
             state.statusCustomer = 'customer-finished';
         },
+        onListCustomer: (state, { payload }) => {
+            state.statusCustomer = 'customer-list';
+            state.customerListAll = payload;
+            state.errorMessage = undefined;
+        },
+        onListCustomerError: (state, { payload }) => {
+            state.statusCustomer = 'customer-error-list';
+            state.customerListAll =  [{}];
+            state.errorMessage = payload;
+        },
         clearErrorMessage: (state) => {
             state.errorMessage = undefined;
         }
@@ -31,5 +42,7 @@ export const {
     onCreateCustomer, 
     onCreateCustomerError,
     clearErrorMessage,
-    onCheckingCustomer 
+    onCheckingCustomer,
+    onListCustomer,
+    onListCustomerError 
 } = customerSlice.actions;
