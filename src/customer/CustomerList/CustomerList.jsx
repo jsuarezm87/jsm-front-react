@@ -89,6 +89,26 @@ export const CustomerList = () => {
                     <TableCell>{customer.email}</TableCell>
                     <TableCell>{customer.status}</TableCell>
                     <TableCell>{customer.managedBy}</TableCell>
+                    <TableCell>
+											<IconButton
+												color='primary'
+												aria-label='Edit'
+												// onClick={() => {
+												// 	showUpdateUserHandler(user._id)
+												// }}
+											>
+												<EditNoteIcon style={{ fontSize: 20 }} />
+											</IconButton>
+											<IconButton
+												color='secondary'
+												aria-label='Delete'
+												// onClick={() => {
+												// 	handleDeleteUser(user._id)
+												// }}
+											>
+												<DeleteSweepIcon style={{ fontSize: 20 }} />
+											</IconButton>
+										</TableCell>
                   </TableRow>
                 ))}
             </TableBody>
