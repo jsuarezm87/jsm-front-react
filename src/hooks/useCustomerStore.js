@@ -27,8 +27,7 @@ export const useCustomerStore = () => {
 
     const listCustomer = async() => {
         try {
-            const { data } = await loginApi.get('/customer/list');  
-            console.log('data: ', data);          
+            const { data } = await loginApi.get('/customer/list');          
             dispatch( onListCustomer(data) );            
         } catch (error) {
             console.log('error: ', error);
