@@ -62,11 +62,10 @@ export const CustomerList = () => {
     }
   }, [customerListAll]);
 
-  const showUpdateCustomerHandler = () => {
-		// const user = users.find((user) => user._id === id)
-		// setShowUpdateCustomer(user)
-		setUpdateCustomerModal(true);
-	}
+  const showUpdateCustomerHandler = (customer) => {
+    setShowUpdateCustomer(customer); 
+    setUpdateCustomerModal(true);
+}
 
   const handleCloseModal = () => {
 		setUpdateCustomerModal(false);
@@ -113,7 +112,7 @@ export const CustomerList = () => {
 												color='primary'
 												aria-label='Edit'
 												onClick={() => {
-													showUpdateCustomerHandler()
+													showUpdateCustomerHandler(customer);
 												}}
 											>
 												<EditNoteIcon style={{ fontSize: 20 }} />
@@ -139,6 +138,7 @@ export const CustomerList = () => {
         <CustomerUpdateModal
           open={updateCustomerModal}
           handleClose={handleCloseModal}
+          customer={showUpdateCustomer}
         />
       )}
 
