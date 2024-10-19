@@ -17,7 +17,9 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
-import WcIcon from '@mui/icons-material/Wc';
+import NumbersIcon from '@mui/icons-material/Numbers';
+import ToggleOnIcon from '@mui/icons-material/ToggleOn';
+import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 import { styled } from '@mui/system';
 // import UpdateUserModal from './UpdateUserModal';
 import Swal from 'sweetalert2';
@@ -72,11 +74,9 @@ export const CustomerList = () => {
             <TableHead>
               <TableRow>
                 <TableCell>Name</TableCell>
-                <TableCell>Last Name</TableCell>
                 <TableCell>Identification</TableCell>
                 <TableCell>Address</TableCell>
                 <TableCell>Phone</TableCell>
-                <TableCell>Phone 2</TableCell>
                 <TableCell>Email</TableCell>
                 <TableCell>Status</TableCell>
                 <TableCell>Managed By</TableCell>
@@ -86,15 +86,14 @@ export const CustomerList = () => {
               {customers?.length > 0 &&
                 customers.map((customer, index) => (
                   <TableRow key={index}>
-                    <TableCell>{customer.name}</TableCell>
-                    <TableCell>{customer.lastName}</TableCell>
-                    <TableCell>{customer.identification}</TableCell>
-                    <TableCell>{customer.address}</TableCell>
-                    <TableCell>{customer.phone}</TableCell>
-                    <TableCell>{customer.phone2}</TableCell>
-                    <TableCell>{customer.email}</TableCell>
-                    <TableCell>{customer.status}</TableCell>
-                    <TableCell>{customer.managedBy}</TableCell>
+                    <TableCell><PersonIcon /> {`${customer.name} ${customer.lastName}`}</TableCell>
+                    <TableCell><NumbersIcon />{customer.identification}</TableCell>
+                    <TableCell><LocationOnIcon /> {customer.address}</TableCell>
+                    <TableCell><PhoneIcon /> {`${customer.phone} / ${customer.phone2}`}</TableCell>
+                    <TableCell><EmailIcon /> {customer.email}</TableCell>
+                    <TableCell>{(customer.status === 'ACTIVO' ? <ToggleOnIcon /> : <ToggleOffIcon />)  } {customer.status}
+                    </TableCell>
+                    <TableCell><EmailIcon /> {customer.managedBy}</TableCell>
                     <TableCell>
 											<IconButton
 												color='primary'
