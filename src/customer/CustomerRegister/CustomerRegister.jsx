@@ -1,4 +1,4 @@
-import {  useMemo } from 'react';
+import {  useEffect, useMemo } from 'react';
 import { useForm } from '../../hooks/useForm';
 import { useAuthStore } from '../../hooks/useAuthStore';
 import Swal from 'sweetalert2';
@@ -10,7 +10,7 @@ import { useCustomerStore } from '../../hooks/useCustomerStore';
 export const CustomerRegister = () => {
 
 	const { user } = useAuthStore();
-	const { registerCustomer, status: statusCustomer, customerCreated, errorMessage} = useCustomerStore();
+	const { registerCustomer, statusCustomer, customerCreated, errorMessage} = useCustomerStore();
 
 	const registerFormFields = useMemo(() => ({
 		name: '', 
@@ -55,6 +55,20 @@ export const CustomerRegister = () => {
 			managedBy
 		});		
 	}
+
+	useEffect(() => {
+		if (statusCustomer === 'customer-created') {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'successfully registered customer',
+                showConfirmButton: false,
+                timer: 2000,
+            });
+        }
+	
+	}, [statusCustomer]);
+	
 
 	return (
 		<div className='user-container'>

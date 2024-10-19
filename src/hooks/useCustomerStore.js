@@ -1,14 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { onChecking, onCreateCustomer, onCreateCustomerError, clearErrorMessage  } from '../store/customer/customerSlice';
+import { onCreateCustomer, onCreateCustomerError, clearErrorMessage  } from '../store/customer/customerSlice';
 import loginApi from '../api/loginApi';
 
 export const useCustomerStore = () => {
 
-    const {status, customerCreated, errorMessage} = useSelector(state => state.customer);
+    const {statusCustomer, customerCreated, errorMessage} = useSelector(state => state.customer);
     const dispatch = useDispatch();
 
     const registerCustomer = async(customer) => {
-        dispatch( onChecking() );
         try {
             const { data } = await loginApi.post('/customer/create', customer);;
             dispatch( onCreateCustomer({ ...data }) );
@@ -24,7 +23,7 @@ export const useCustomerStore = () => {
 
     return {
         registerCustomer,
-        status, 
+        statusCustomer, 
         customerCreated, 
         errorMessage
     }
