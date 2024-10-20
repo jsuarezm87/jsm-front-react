@@ -3,6 +3,7 @@ import { Box, Button, Dialog, DialogContent, DialogTitle, FormControl, InputLabe
 import { useState } from "react";
 import { styled } from '@mui/system';
 import { useCustomerStore } from "../../hooks/useCustomerStore";
+import { useForm } from "../../hooks/useForm";
 
 const FormContainer = styled(Box)(({ theme }) => ({
 	marginTop: theme.spacing(2),
@@ -14,13 +15,36 @@ const FormContainer = styled(Box)(({ theme }) => ({
 export const CustomerUpdateModal = ({ open, handleClose, customer }) => {
 
 	const { updateCustomer } = useCustomerStore();
-    // const [status, setStatus] = useState(customer.status || ""); 
+	const [infoModalData, setModalData] = useState(customer);
 
-    // const handleStatusChange = (event) => {
-    //     setStatus(event.target.value);
-    // };
+	const {
+		name, 
+		lastName, 
+		address, 
+		phone, 
+		phone2,  
+		email,  
+		status,
+		onInputChange: onRegisterInputChange,
+		onResetForm,
+	} = useForm(infoModalData);
 
-	
+	const handleSubmit = (event) => {
+		event.preventDefault();	
+		const newCustomer = {
+			id: customer._id,
+			name, 
+			lastName, 
+			address, 
+			phone, 
+			phone2,  
+			email,  
+			status,
+		}	
+		console.log('newCustomer: ', newCustomer)
+		updateCustomer(newCustomer);		
+	}
+    
 
     return (
         <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
@@ -28,22 +52,64 @@ export const CustomerUpdateModal = ({ open, handleClose, customer }) => {
             <DialogContent>
 				<FormContainer>
 					<Box sx={{ flex: '1 1 30%', minWidth: 150, maxWidth: 200, marginBottom: 2 }}>
-						<TextField label="Name" name="name" fullWidth size="small" defaultValue={customer.name} />
+						<TextField 
+							label="Name" 
+							name="name" 
+							fullWidth 
+							size="small" 
+							value={name} 
+  							onChange={onRegisterInputChange}
+						/>
 					</Box>
 					<Box sx={{ flex: '1 1 30%', minWidth: 150, maxWidth: 200, marginBottom: 2 }}>
-						<TextField label="Last Name" name="lastname" fullWidth size="small" defaultValue={customer.lastname} />
+						<TextField 
+							label="Last Name" 
+							name="lastName" 
+							fullWidth 
+							size="small" 
+							value={lastName} 
+  							onChange={onRegisterInputChange}
+						/>
 					</Box>
 					<Box sx={{ flex: '1 1 30%', minWidth: 150, maxWidth: 200, marginBottom: 2 }}>
-						<TextField label="Address" name="address" fullWidth size="small" defaultValue={customer.address} />
+						<TextField 
+							label="Address" 
+							name="address" 
+							fullWidth 
+							size="small" 
+							value={address} 
+  							onChange={onRegisterInputChange}
+						/>
 					</Box>
 					<Box sx={{ flex: '1 1 30%', minWidth: 150, maxWidth: 200, marginBottom: 2 }}>
-						<TextField label="Phone" name="phone" fullWidth size="small" defaultValue={customer.phone} />
+						<TextField 
+							label="Phone" 
+							name="phone" 
+							fullWidth 
+							size="small" 
+							value={phone} 
+  							onChange={onRegisterInputChange}
+						/>
 					</Box>
 					<Box sx={{ flex: '1 1 30%', minWidth: 150, maxWidth: 200, marginBottom: 2 }}>
-						<TextField label="Phone 2" name="phone2" fullWidth size="small" defaultValue={customer.phone2} />
+						<TextField 
+							label="Phone 2" 
+							name="phone2" 
+							fullWidth 
+							size="small" 
+							value={phone2} 
+  							onChange={onRegisterInputChange}
+						/>
 					</Box>
 					<Box sx={{ flex: '1 1 30%', minWidth: 150, maxWidth: 200, marginBottom: 2 }}>
-						<TextField label="Email" name="email" fullWidth size="small" defaultValue={customer.email} />
+						<TextField 
+							label="Email" 
+							name="email" 
+							fullWidth 
+							size="small" 
+							value={email} 
+  							onChange={onRegisterInputChange}
+						/>
 					</Box>
 					<Box sx={{ flex: '1 1 30%', minWidth: 100, maxWidth: 180, marginBottom: 2 }}>
 						<FormControl fullWidth size="small">
@@ -51,9 +117,8 @@ export const CustomerUpdateModal = ({ open, handleClose, customer }) => {
 							<Select 
 								label="Status" 
 								name="status" 
-								defaultValue={customer.status}
-								// value={status} 
-								// onChange={handleStatusChange}
+								value={status} 
+  								onChange={onRegisterInputChange}
 							>
 								<MenuItem value="ACTIVO">ACTIVO</MenuItem>
 								<MenuItem value="INACTIVO">INACTIVO</MenuItem>
@@ -67,7 +132,7 @@ export const CustomerUpdateModal = ({ open, handleClose, customer }) => {
                 <Button onClick={handleClose} color="secondary">
                     Cancel
                 </Button>
-                <Button color="primary">
+                <Button onClick={handleSubmit} color="primary">
                     Submit
                 </Button>
             </DialogActions>

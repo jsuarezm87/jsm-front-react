@@ -38,7 +38,7 @@ export const useCustomerStore = () => {
 
     const updateCustomer = async(customer) => {
         try {    
-            const { data } = await loginApi.put(`/customer/update/${ customer._id }`, customer );    
+            const { data } = await loginApi.put(`/customer/update/${ customer.id }`, customer );    
             dispatch( onUpdateCustomer(data) );            
         } catch (error) {
             console.log('error: ', error);
