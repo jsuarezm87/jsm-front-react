@@ -1,9 +1,10 @@
 import { Box, Button, Dialog, DialogContent, DialogTitle, FormControl, InputLabel, 
 	     MenuItem, Select, TextField, DialogActions } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { styled } from '@mui/system';
 import { useCustomerStore } from "../../hooks/useCustomerStore";
 import { useForm } from "../../hooks/useForm";
+import Swal from 'sweetalert2';
 
 const FormContainer = styled(Box)(({ theme }) => ({
 	marginTop: theme.spacing(2),
@@ -14,7 +15,7 @@ const FormContainer = styled(Box)(({ theme }) => ({
 
 export const CustomerUpdateModal = ({ open, handleClose, customer }) => {
 
-	const { updateCustomer } = useCustomerStore();
+	const { updateCustomer, statusCustomer,checkingCustomer } = useCustomerStore();
 	const [infoModalData, setModalData] = useState(customer);
 
 	const {
@@ -31,7 +32,7 @@ export const CustomerUpdateModal = ({ open, handleClose, customer }) => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();	
-		const newCustomer = {
+		updateCustomer({
 			id: customer._id,
 			name, 
 			lastName, 
@@ -40,10 +41,24 @@ export const CustomerUpdateModal = ({ open, handleClose, customer }) => {
 			phone2,  
 			email,  
 			status,
-		}	
-		console.log('newCustomer: ', newCustomer)
-		updateCustomer(newCustomer);		
+		});
 	}
+
+	useEffect(() => {
+		if (statusCustomer === 'customer-updated') {
+			handleClose();
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'successfully updated customer',
+                showConfirmButton: false,
+                timer: 2000,
+            });
+			onResetForm();
+			checkingCustomer();
+        }
+	
+	}, [statusCustomer]);
     
 
     return (
