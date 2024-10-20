@@ -2,6 +2,7 @@ import { Box, Button, Dialog, DialogContent, DialogTitle, FormControl, InputLabe
 	     MenuItem, Select, TextField, DialogActions } from "@mui/material";
 import { useState } from "react";
 import { styled } from '@mui/system';
+import { useCustomerStore } from "../../hooks/useCustomerStore";
 
 const FormContainer = styled(Box)(({ theme }) => ({
 	marginTop: theme.spacing(2),
@@ -11,6 +12,8 @@ const FormContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const CustomerUpdateModal = ({ open, handleClose, customer }) => {
+
+	const { updateCustomer } = useCustomerStore();
     // const [status, setStatus] = useState(customer.status || ""); 
 
     // const handleStatusChange = (event) => {

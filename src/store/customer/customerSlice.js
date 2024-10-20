@@ -29,7 +29,23 @@ export const customerSlice = createSlice({
         },
         onListCustomerError: (state, { payload }) => {
             state.statusCustomer = 'customer-error-list';
-            state.customerListAll =  [{}];
+            state.customerListAll =  [];
+            state.errorMessage = payload;
+        },
+        onUpdateCustomer: (state, { payload }) => {
+            state.statusCustomer = 'customer-updated';
+            state.customerListAll = state.customerListAll.map( customer => {
+                if ( customer._id === payload._id ) {
+                    return payload;
+                }
+
+                return customer;
+            });
+            state.errorMessage = undefined;
+        },
+        onUpdateCustomerError: (state, { payload }) => {
+            state.statusCustomer = 'customer-error-update';
+            state.customerListAll =  [];
             state.errorMessage = payload;
         },
         clearErrorMessage: (state) => {
@@ -44,5 +60,7 @@ export const {
     clearErrorMessage,
     onCheckingCustomer,
     onListCustomer,
-    onListCustomerError 
+    onListCustomerError,
+    onUpdateCustomer,
+    onUpdateCustomerError 
 } = customerSlice.actions;

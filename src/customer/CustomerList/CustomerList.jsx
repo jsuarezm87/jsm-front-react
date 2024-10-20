@@ -46,7 +46,7 @@ const GridContainer = styled('div')(({ theme }) => ({
 
 export const CustomerList = () => {
 
-  const { listCustomer, statusCustomer, checkingCustomer, errorMessage, customerListAll} = useCustomerStore();
+  const { listCustomer, customerListAll} = useCustomerStore();
 
   const [customers, setCustomers] = useState([]);
   const [updateCustomerModal, setUpdateCustomerModal] = useState(false);
