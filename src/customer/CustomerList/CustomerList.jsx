@@ -101,18 +101,17 @@ export const CustomerList = () => {
         </Typography>
       </Header>      
       <GridContainer>
-        {/* <TableContainer component={Paper} elevation={0}> */}
-        <TableContainer component={Paper} elevation={0} sx={{ maxHeight: 400, overflowY: 'auto' }}>
+        <TableContainer component={Paper} elevation={0} sx={{ maxHeight: 500, overflowY: 'auto' }}>
           <Table stickyHeader>
             <TableHead>
               <TableRow>
-                <TableCell>Name</TableCell>
-                <TableCell>Identification</TableCell>
-                <TableCell>Address</TableCell>
-                <TableCell>Phone</TableCell>
-                <TableCell>Email</TableCell>
-                <TableCell>Status</TableCell>
-                <TableCell>Managed By</TableCell>
+                <TableCell><Typography fontWeight="bold">Name</Typography></TableCell>
+                <TableCell><Typography fontWeight="bold">Identification</Typography></TableCell>
+                <TableCell><Typography fontWeight="bold">Address</Typography></TableCell>
+                <TableCell><Typography fontWeight="bold">Phone</Typography></TableCell>
+                <TableCell><Typography fontWeight="bold">Email</Typography></TableCell>
+                <TableCell><Typography fontWeight="bold">Status</Typography></TableCell>
+                <TableCell><Typography fontWeight="bold">Managed By</Typography></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
