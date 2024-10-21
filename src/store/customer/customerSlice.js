@@ -50,7 +50,7 @@ export const customerSlice = createSlice({
         },
         onDeleteCustomer: (state, { payload }) => {
             state.statusCustomer = 'customer-delete';
-            state.customerListAll = state.customerListAll.filter( customer => customer._id !== payload._id);
+            state.customerListAll = state.customerListAll.filter( customer => customer._id !== payload);
             state.errorMessage = undefined;
         },
         onDeleteCustomerError: (state, { payload }) => {

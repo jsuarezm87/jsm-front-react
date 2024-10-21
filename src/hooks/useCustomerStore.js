@@ -50,8 +50,8 @@ export const useCustomerStore = () => {
 
     const deleteCustomer = async(id) => {
         try {    
-            const { data } = await loginApi.put(`/customer/delete/${id}` );    
-            dispatch( onDeleteCustomer(data) );            
+            await loginApi.put(`/customer/delete/${id}` );    
+            dispatch( onDeleteCustomer(id) );            
         } catch (error) {
             console.log('error: ', error);
             dispatch( onDeleteCustomerError( error.response.data.errors || '--' ) );
