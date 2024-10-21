@@ -46,7 +46,7 @@ const GridContainer = styled('div')(({ theme }) => ({
 
 export const CustomerList = () => {
 
-  const { listCustomer, customerListAll} = useCustomerStore();
+  const { listCustomer, customerListAll, deleteCustomer} = useCustomerStore();
 
   const [customers, setCustomers] = useState([]);
   const [updateCustomerModal, setUpdateCustomerModal] = useState(false);
@@ -65,12 +65,16 @@ export const CustomerList = () => {
   const showUpdateCustomerHandler = (customer) => {
     setShowUpdateCustomer(customer); 
     setUpdateCustomerModal(true);
-}
+  }
 
   const handleCloseModal = () => {
 		setUpdateCustomerModal(false);
 		setShowUpdateCustomer({});
 	}
+
+  const handleDeleteCustomer = (id) => {
+    deleteCustomer(id);
+  }
 
   
 
@@ -120,9 +124,9 @@ export const CustomerList = () => {
 											<IconButton
 												color='secondary'
 												aria-label='Delete'
-												// onClick={() => {
-												// 	handleDeleteUser(user._id)
-												// }}
+												onClick={() => {
+													handleDeleteCustomer(customer._id)
+												}}
 											>
 												<DeleteSweepIcon style={{ fontSize: 20 }} />
 											</IconButton>

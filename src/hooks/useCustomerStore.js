@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { onCreateCustomer, onCreateCustomerError, clearErrorMessage, onCheckingCustomer, 
-    onListCustomer, onListCustomerError, onUpdateCustomer, onUpdateCustomerError  } from '../store/customer/customerSlice';
+    onListCustomer, onListCustomerError, onUpdateCustomer, onUpdateCustomerError,  
+    onDeleteCustomer,
+    onDeleteCustomerError} from '../store/customer/customerSlice';
 import loginApi from '../api/loginApi';
 
 export const useCustomerStore = () => {
@@ -46,6 +48,16 @@ export const useCustomerStore = () => {
         }
     }
 
+    const deleteCustomer = async(id) => {
+        try {    
+            const { data } = await loginApi.put(`/customer/delete/${id}` );    
+            dispatch( onDeleteCustomer(data) );            
+        } catch (error) {
+            console.log('error: ', error);
+            dispatch( onDeleteCustomerError( error.response.data.errors || '--' ) );
+        }
+    }
+
 
     return {
         registerCustomer,
@@ -55,7 +67,8 @@ export const useCustomerStore = () => {
         checkingCustomer,
         listCustomer,
         customerListAll,
-        updateCustomer
+        updateCustomer,
+        deleteCustomer
     }
 
 }
