@@ -46,7 +46,7 @@ const GridContainer = styled('div')(({ theme }) => ({
 
 export const CustomerList = () => {
 
-  const { listCustomer, customerListAll, deleteCustomer} = useCustomerStore();
+  const { listCustomer, customerListAll, deleteCustomer, statusCustomer, checkingCustomer} = useCustomerStore();
 
   const [customers, setCustomers] = useState([]);
   const [updateCustomerModal, setUpdateCustomerModal] = useState(false);
@@ -61,6 +61,21 @@ export const CustomerList = () => {
       setCustomers(customerListAll);
     }
   }, [customerListAll]);
+
+  useEffect(() => {
+		if (statusCustomer === 'customer-delete') {		
+      Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'successfully delete customer',
+          showConfirmButton: false,
+          timer: 2000,
+      });
+			checkingCustomer();
+    }
+	
+	}, [statusCustomer]);
+
 
   const showUpdateCustomerHandler = (customer) => {
     setShowUpdateCustomer(customer); 
