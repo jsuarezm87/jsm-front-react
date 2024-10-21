@@ -101,8 +101,9 @@ export const CustomerList = () => {
         </Typography>
       </Header>      
       <GridContainer>
-        <TableContainer component={Paper} elevation={0}>
-          <Table>
+        {/* <TableContainer component={Paper} elevation={0}> */}
+        <TableContainer component={Paper} elevation={0} sx={{ maxHeight: 400, overflowY: 'auto' }}>
+          <Table stickyHeader>
             <TableHead>
               <TableRow>
                 <TableCell>Name</TableCell>
