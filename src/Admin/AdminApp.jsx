@@ -1,10 +1,12 @@
 import { AppBar, Box, IconButton, Toolbar, Typography } from '@mui/material';
 import { Suspense } from 'react';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ReplyOutlinedIcon from '@mui/icons-material/ReplyOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { Sidebar } from '../components/Sidebar';
 import { useAuthStore } from '../hooks/useAuthStore';
+import { appBar, boxContainer, buttonStyle, firstBox, secondBox } from './AdminAppStyles';
+
 
 
 export const AdminApp = ({ ...rest }) => {	
@@ -20,39 +22,29 @@ export const AdminApp = ({ ...rest }) => {
 	const handleBack = () => {
 		navigate(-1);
 	}
-	
 
 	return (
-		<Box
-			sx={{
-				display: 'flex',
-				height: '100vh',
-				overflow: 'hidden',
-			}}
-		>
+		<Box sx={ boxContainer }>
+	
 			<Sidebar />
-			<Box sx={{ width: '100%' }}>
-				<Box sx={{ flexGrow: 1, width: '100%' }}>
-					<AppBar position='static' sx={{ backgroundColor: '#fff', color: '#000' }}>
+			<Box sx={ firstBox }>
+				<Box sx={ secondBox }>
+					<AppBar { ...appBar }>
 						<Toolbar>
 							<IconButton 
-								size='large' 
-								edge='start' 
-								color='inherit' 
-								aria-label='menu' 
+								{...buttonStyle}
+								aria-label='menu'
 								sx={{ mr: 2 }}
 								onClick={handleBack}
 							>
-								<ArrowBackIcon /> 
+								<ReplyOutlinedIcon /> 
 							</IconButton>
-							<Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
+							<Typography variant='h6' component='div' sx={{ flexGrow: 1 }} color='grey'>
 								{pathName}
 							</Typography>
 							<IconButton 
-								size='large' 
-								edge='start' 
-								color='primary' 
-								aria-label='menu' 
+								{...buttonStyle}
+								aria-label='menu'
 								sx={{ mr: 2 }}
 								onClick={handleLogout}
 							>
