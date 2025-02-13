@@ -2,17 +2,23 @@ import { AppBar, Box, IconButton, Toolbar, Typography } from '@mui/material';
 import { Suspense } from 'react';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { Sidebar } from '../components/Sidebar';
 import { useAuthStore } from '../hooks/useAuthStore';
 
 
 export const AdminApp = ({ ...rest }) => {	
+
 	const pathName = window.location.pathname;
+	const navigate = useNavigate();
 	const {startLogout} = useAuthStore();
 
 	const handleLogout = () => {
 		startLogout();
+	}
+
+	const handleBack = () => {
+		navigate(-1);
 	}
 	
 
@@ -35,8 +41,9 @@ export const AdminApp = ({ ...rest }) => {
 								color='inherit' 
 								aria-label='menu' 
 								sx={{ mr: 2 }}
+								onClick={handleBack}
 							>
-								<ArrowBackIcon />
+								<ArrowBackIcon /> 
 							</IconButton>
 							<Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
 								{pathName}
