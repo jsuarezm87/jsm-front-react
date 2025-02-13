@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { useAuthStore } from '../hooks/useAuthStore';
-import { LoginPage } from '../auth/pages/LoginPage';
-import { RegisterPage } from '../auth/pages/RegisterPage';
+import { LoginPage } from '../auth/LoginPage';
+import { RegisterPage } from '../auth/RegisterPage';
 import { AdminApp } from '../admin/AdminApp';
 import { CustomerRegister } from '../customer/CustomerRegister/CustomerRegister';
 import { CustomerList } from '../customer/CustomerList/CustomerList';

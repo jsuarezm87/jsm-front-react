@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import Swal from 'sweetalert2';
+import { useAuthStore } from '../hooks/useAuthStore';
 import './LoginPage.css';
-import { useAuthStore } from '../../hooks/useAuthStore';
-import { useForm } from '../../hooks/useForm';
+import { useForm } from '../hooks/useForm';
 import { Link } from 'react-router-dom';
 
 const loginFormFields = {
